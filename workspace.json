@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "mwc-browser": "packages/mwc-browser"
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
