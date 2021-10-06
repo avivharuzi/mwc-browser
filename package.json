@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.0",
+    "@commitlint/config-angular": "^13.2.0",
     "@commitlint/config-conventional": "^13.2.0",
     "@nrwl/cli": "12.6.6",
     "@nrwl/eslint-plugin-nx": "12.9.0",
