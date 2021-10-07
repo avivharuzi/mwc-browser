@@ -29,6 +29,7 @@
   },
   "private": true,
   "dependencies": {
+    "delay": "^5.0.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
