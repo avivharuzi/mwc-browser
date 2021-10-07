@@ -1,3 +1,5 @@
+import * as delay from 'delay';
+
 import { ChannelConnectionCreator } from './channel-connection-creator';
 
 describe('ChannelConnectionCreator', () => {
@@ -26,14 +28,11 @@ describe('ChannelConnectionCreator', () => {
     const channelConnectionCreator = new ChannelConnectionCreator();
     const updatedAtBefore =
       channelConnectionCreator.getChannelConnection().updatedAt;
-    await setTimeout(() => {
-      channelConnectionCreator.update();
-      const updatedAtAfter =
-        channelConnectionCreator.getChannelConnection().updatedAt;
-      expect(updatedAtAfter.getTime()).toBeGreaterThan(
-        updatedAtBefore.getTime()
-      );
-    }, 1000);
+    await delay(1000);
+    channelConnectionCreator.update();
+    const updatedAtAfter =
+      channelConnectionCreator.getChannelConnection().updatedAt;
+    expect(updatedAtAfter.getTime()).toBeGreaterThan(updatedAtBefore.getTime());
   });
 
   it('should be create change master value', () => {
