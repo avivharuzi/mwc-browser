@@ -1,6 +1,6 @@
 export interface ChannelConnection {
   id: string;
-  isMaster: boolean;
+  isManager: boolean;
   updatedAt: Date;
   createdAt: Date;
 }

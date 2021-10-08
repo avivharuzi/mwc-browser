@@ -34,8 +34,8 @@ export class ChannelConnectionsHandler {
     this.addConnection(channelConnection);
   }
 
-  isConnectionCanBeMaster(channelConnection: ChannelConnection): boolean {
-    if (this.isSomeoneMaster() || channelConnection.isMaster) {
+  isConnectionCanBeManager(channelConnection: ChannelConnection): boolean {
+    if (this.isSomeoneManager() || channelConnection.isManager) {
       return false;
     }
     const allConnectionsSorted = [
@@ -70,10 +70,10 @@ export class ChannelConnectionsHandler {
     });
   }
 
-  private isSomeoneMaster(): boolean {
+  private isSomeoneManager(): boolean {
     return (
-      this.getConnections().filter((connection) => connection.isMaster).length >
-      0
+      this.getConnections().filter((connection) => connection.isManager)
+        .length > 0
     );
   }
 

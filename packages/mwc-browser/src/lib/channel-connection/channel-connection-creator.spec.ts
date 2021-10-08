@@ -7,7 +7,7 @@ describe('ChannelConnectionCreator', () => {
     const channelConnectionCreator = new ChannelConnectionCreator();
     const channelConnection = channelConnectionCreator.getChannelConnection();
     expect(channelConnection.id).toBeDefined();
-    expect(channelConnection.isMaster).toEqual(false);
+    expect(channelConnection.isManager).toEqual(false);
     expect(channelConnection.updatedAt).toBeInstanceOf(Date);
     expect(channelConnection.createdAt).toBeInstanceOf(Date);
   });
@@ -35,17 +35,17 @@ describe('ChannelConnectionCreator', () => {
     expect(updatedAtAfter.getTime()).toBeGreaterThan(updatedAtBefore.getTime());
   });
 
-  it('should be create change master value', () => {
+  it('should be create change manager value', () => {
     const channelConnectionCreator = new ChannelConnectionCreator();
-    expect(channelConnectionCreator.getChannelConnection().isMaster).toEqual(
+    expect(channelConnectionCreator.getChannelConnection().isManager).toEqual(
       false
     );
-    channelConnectionCreator.setIsMaster(true);
-    expect(channelConnectionCreator.getChannelConnection().isMaster).toEqual(
+    channelConnectionCreator.setIsManager(true);
+    expect(channelConnectionCreator.getChannelConnection().isManager).toEqual(
       true
     );
-    channelConnectionCreator.setIsMaster(false);
-    expect(channelConnectionCreator.getChannelConnection().isMaster).toEqual(
+    channelConnectionCreator.setIsManager(false);
+    expect(channelConnectionCreator.getChannelConnection().isManager).toEqual(
       false
     );
   });

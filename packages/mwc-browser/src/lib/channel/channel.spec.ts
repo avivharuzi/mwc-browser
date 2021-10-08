@@ -9,15 +9,15 @@ describe('Channel', () => {
     channel.destroy();
   });
 
-  it('should be isMaster false', () => {
+  it('should be isManager false', () => {
     const channel = new Channel('my-channel');
-    expect(channel.isMaster).toEqual(false);
+    expect(channel.isManager).toEqual(false);
     channel.destroy();
   });
 
-  it('should be master after few seconds', async () => {
+  it('should be manager after few seconds', async () => {
     const channel = new Channel('my-channel');
     await delay(4000);
-    expect(channel.isMaster).toEqual(true);
+    expect(channel.isManager).toEqual(true);
   });
 });

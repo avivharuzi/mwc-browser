@@ -33,7 +33,7 @@ describe('ChannelConnectionsHandler', () => {
     expect(channelConnectionsHandler.getConnections()[0]).toEqual(
       channelConnectionFirstTime
     );
-    channelConnectionCreator.setIsMaster(true);
+    channelConnectionCreator.setIsManager(true);
     const channelConnectionSecondTime =
       channelConnectionCreator.getChannelConnection();
     channelConnectionsHandler.addOrUpdateConnection(
@@ -56,7 +56,7 @@ describe('ChannelConnectionsHandler', () => {
     expect(channelConnectionsHandler.getConnections()).toHaveLength(0);
   });
 
-  it('should choose the right master', async () => {
+  it('should choose the right manager', async () => {
     const channelConnectionCreator = new ChannelConnectionCreator();
     const channelConnectionsHandler = new ChannelConnectionsHandler();
     const channelConnectionFromOutsideBefore =
@@ -74,12 +74,12 @@ describe('ChannelConnectionsHandler', () => {
     const channelConnectionFromOutsideAfter =
       channelConnectionCreator.getChannelConnection();
     expect(
-      channelConnectionsHandler.isConnectionCanBeMaster(
+      channelConnectionsHandler.isConnectionCanBeManager(
         channelConnectionFromOutsideBefore
       )
     ).toBeTruthy();
     expect(
-      channelConnectionsHandler.isConnectionCanBeMaster(
+      channelConnectionsHandler.isConnectionCanBeManager(
         channelConnectionFromOutsideAfter
       )
     ).toBeFalsy();
