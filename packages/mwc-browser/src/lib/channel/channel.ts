@@ -22,7 +22,7 @@ export class Channel<T> {
     ChannelMessage<T | ChannelConnection>
   >;
 
-  onMaster: (isMaster: boolean) => void | null = null;
+  onManager: (isManager: boolean) => void | null = null;
   onMessage: (message: T) => void | null = null;
 
   constructor(name: string, options: Partial<ChannelOptions> = {}) {
@@ -45,8 +45,8 @@ export class Channel<T> {
     return this.connectionsHandler.getConnections();
   }
 
-  get isMaster(): boolean {
-    return this.connectionCreator.getChannelConnection().isMaster;
+  get isManager(): boolean {
+    return this.connectionCreator.getChannelConnection().isManager;
   }
 
   emitMessage(data: T): void {
@@ -54,7 +54,7 @@ export class Channel<T> {
   }
 
   destroy(): void {
-    this.connectionCreator.setIsMaster(false);
+    this.connectionCreator.setIsManager(false);
     this.emitPing();
     this.clearIntervals();
     this.communication.close();
@@ -66,7 +66,7 @@ export class Channel<T> {
       setInterval(this.pingInterval(), this.options.pingTimer)
     );
     this.intervalIds.push(
-      setInterval(this.masterInterval(), this.options.masterTimer)
+      setInterval(this.managerInterval(), this.options.managerTimer)
     );
     this.intervalIds.push(
       setInterval(this.zombiesInterval(), this.options.zombiesTimer)
@@ -80,14 +80,14 @@ export class Channel<T> {
     this.intervalIds = [];
   }
 
-  private masterInterval(): () => void {
+  private managerInterval(): () => void {
     return (): void => {
       if (
-        this.connectionsHandler.isConnectionCanBeMaster(
+        this.connectionsHandler.isConnectionCanBeManager(
           this.connectionCreator.getChannelConnection()
         )
       ) {
-        this.emitMaster();
+        this.emitManager();
       }
     };
   }
@@ -118,10 +118,10 @@ export class Channel<T> {
             message.data as ChannelConnection
           );
           break;
-        case ChannelMessageType.Master:
-          this.connectionCreator.setIsMaster(false);
+        case ChannelMessageType.Manager:
+          this.connectionCreator.setIsManager(false);
           if (this.onMessage) {
-            this.onMaster(false);
+            this.onManager(false);
           }
           break;
         case ChannelMessageType.Message:
@@ -141,15 +141,15 @@ export class Channel<T> {
     );
   }
 
-  private emitMaster(): void {
-    this.connectionCreator.setIsMaster(true);
+  private emitManager(): void {
+    this.connectionCreator.setIsManager(true);
     this.emitPing();
     this.emit(
-      ChannelMessageType.Master,
+      ChannelMessageType.Manager,
       this.connectionCreator.getChannelConnection()
     );
     if (this.onMessage) {
-      this.onMaster(true);
+      this.onManager(true);
     }
   }
 

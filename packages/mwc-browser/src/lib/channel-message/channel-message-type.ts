@@ -1,5 +1,5 @@
 export enum ChannelMessageType {
   Ping = 'ping',
-  Master = 'master',
+  Manager = 'manager',
   Message = 'message',
 }
