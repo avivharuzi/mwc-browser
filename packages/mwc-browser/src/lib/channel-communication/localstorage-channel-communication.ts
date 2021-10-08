@@ -16,7 +16,7 @@ export class LocalstorageChannelCommunication<T>
       if (event.storageArea !== localStorage) {
         return;
       }
-      if (event.key === this.channelName) {
+      if (event.key === this.channelName && event.newValue !== null) {
         cb(JSON.parse(event.newValue));
       }
     };

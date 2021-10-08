@@ -7,7 +7,7 @@ export class ChannelConnectionsHandler {
   private options: ChannelConnectionOptions;
 
   constructor(options: Partial<ChannelConnectionOptions> = {}) {
-    this.reset();
+    this.connections = [];
     this.options = {
       ...channelConnectionDefaultOptions,
       ...options,
