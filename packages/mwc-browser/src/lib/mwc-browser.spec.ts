@@ -1,7 +1,8 @@
+import { Channel } from './channel';
 import { mwcBrowser } from './mwc-browser';
 
 describe('mwcBrowser', () => {
-  it('should work', () => {
-    expect(mwcBrowser()).toEqual('mwc-browser');
+  it('should create Channel instance', () => {
+    expect(mwcBrowser('smile-channel')).toBeInstanceOf(Channel);
   });
 });
