@@ -13,6 +13,9 @@ import { ChannelOptions } from './channel-options';
 import { LIBRARY_NAME } from '../library-name';
 
 export class Channel<T> {
+  onManager: ((isManager: boolean) => void) | null;
+  onMessage: ((message: T) => void) | null;
+
   private readonly name: string;
   private options: ChannelOptions;
   private intervalIds: number[];
@@ -22,15 +25,14 @@ export class Channel<T> {
     ChannelMessage<T | ChannelConnection>
   >;
 
-  onManager: (isManager: boolean) => void | null = null;
-  onMessage: (message: T) => void | null = null;
-
   constructor(name: string, options: Partial<ChannelOptions> = {}) {
-    this.name = `${LIBRARY_NAME}.CHANNEL_NAME_${name}`;
+    this.name = `${LIBRARY_NAME}_CHANNEL_NAME_${name}`;
     this.options = {
       ...channelDefaultOptions,
       ...options,
     };
+    this.onManager = null;
+    this.onMessage = null;
     this.intervalIds = [];
     this.connectionCreator = new ChannelConnectionCreator();
     this.connectionsHandler = new ChannelConnectionsHandler();
@@ -120,7 +122,7 @@ export class Channel<T> {
           break;
         case ChannelMessageType.Manager:
           this.connectionCreator.setIsManager(false);
-          if (this.onMessage) {
+          if (this.onManager) {
             this.onManager(false);
           }
           break;
@@ -148,7 +150,7 @@ export class Channel<T> {
       ChannelMessageType.Manager,
       this.connectionCreator.getChannelConnection()
     );
-    if (this.onMessage) {
+    if (this.onManager) {
       this.onManager(true);
     }
   }

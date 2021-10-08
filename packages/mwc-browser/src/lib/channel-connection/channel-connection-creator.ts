@@ -2,10 +2,10 @@ import { ChannelConnection } from './channel-connection';
 import { uuid } from '../utils';
 
 export class ChannelConnectionCreator {
-  private id: string;
-  private isManager: boolean;
-  private updatedAt: Date;
-  private createdAt: Date;
+  private id!: string;
+  private isManager!: boolean;
+  private updatedAt!: Date;
+  private createdAt!: Date;
 
   constructor() {
     this.init();
