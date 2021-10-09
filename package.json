@@ -16,7 +16,7 @@
     "test:mwc-browser": "nx test mwc-browser",
     "lint:mwc-browser": "nx lint mwc-browser",
     "serve:mwc-browser-demo": "nx serve mwc-browser-demo",
-    "build:mwc-browser-demo": "nx build mwc-browser-demo",
+    "build:mwc-browser-demo": "nx build mwc-browser-demo --base-href=\"/mwc-browser/\"",
     "test:mwc-browser-demo": "nx test mwc-browser-demo",
     "lint:mwc-browser-demo": "nx lint mwc-browser-demo",
     "affected:apps": "nx affected:apps",
