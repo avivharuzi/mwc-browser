@@ -15,7 +15,6 @@
     "build:mwc-browser": "nx build mwc-browser",
     "test:mwc-browser": "nx test mwc-browser",
     "lint:mwc-browser": "nx lint mwc-browser",
-    "publish:mwc-browser": "npm run build:mwc-browser && cd dist/libs/mwc-browser && npm publish --access public",
     "serve:mwc-browser-demo": "nx serve mwc-browser-demo",
     "build:mwc-browser-demo": "nx build mwc-browser-demo --base-href=\"/mwc-browser/\"",
     "test:mwc-browser-demo": "nx test mwc-browser-demo",
