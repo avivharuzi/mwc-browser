@@ -15,6 +15,10 @@ Manager-Workers communication between browser tabs.
 
 ✅ Can be used also for just messaging between tabs
 
+## Demo
+
+[Demo page](https://avivharuzi.github.io/mwc-browser)
+
 ## Installation
 
 ```sh
