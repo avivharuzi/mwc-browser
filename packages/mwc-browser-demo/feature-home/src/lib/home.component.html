@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+  <div class="col-xl-6 col-sm-12">
+    <div class="text-center mb-5">
+      <h2>Open many tabs too see the communication between them.</h2>
+    </div>
+    <div class="mb-5">
+      <h3 class="mb-3">id: {{ channelId }}</h3>
+      <h3>isManager: {{ isManager }}</h3>
+    </div>
+    <mat-form-field class="w-100 mb-3" appearance="fill">
+      <mat-label>Message</mat-label>
+      <textarea matInput #messageInput placeholder="Message"></textarea>
+    </mat-form-field>
+    <button
+      class="w-100"
+      mat-flat-button
+      color="primary"
+      (click)="sendMessage(messageInput.value) && (messageInput.value = '')"
+    >
+      Send
+    </button>
+    <div class="messages mt-5" *ngIf="messages && messages.length > 0">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let message of messages" role="listitem">{{
+          message
+        }}</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>
