@@ -1,6 +1,5 @@
-import * as delay from 'delay';
-
 import { Channel } from './channel';
+import { delay } from '../utils';
 
 describe('Channel', () => {
   it('should be with valid id', function () {
