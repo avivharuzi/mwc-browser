@@ -14,6 +14,7 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm run build:mwc-browser-demo
+      - run: cd dist/apps/mwc-browser-demo && cp index.html 404.html && cd ./../../../
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
