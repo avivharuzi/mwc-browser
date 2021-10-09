@@ -13,7 +13,7 @@ Manager-Workers communication between browser tabs.
 
 ✅ Manager-Workers communication
 
-✅ Can be also for just messaging between tabs
+✅ Can be used also for just messaging between tabs
 
 ## Installation
 
@@ -64,7 +64,7 @@ channel.isManager; // If Channel is Manager.
 channel.numberOfConnections; // The number of current connections that connected to the same channel.
 ```
 
-Send message to other channels or to your self.
+Send message to other connections or to your self.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
@@ -90,7 +90,7 @@ channel.onMessage = (message: string): void => {
 };
 ```
 
-Destroy the channel if you don't need it anymore.
+Destroy the channel connection if you don't need it anymore.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
