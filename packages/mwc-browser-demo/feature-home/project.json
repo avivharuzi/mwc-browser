@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "packages/mwc-browser-demo/feature-home",
+  "sourceRoot": "packages/mwc-browser-demo/feature-home/src",
+  "prefix": "mwc-browser-demo",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/mwc-browser-demo/feature-home"],
+      "options": {
+        "jestConfig": "packages/mwc-browser-demo/feature-home/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/mwc-browser-demo/feature-home/src/**/*.ts",
+          "packages/mwc-browser-demo/feature-home/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:mwc-browser-demo", "type:feature"]
+}
