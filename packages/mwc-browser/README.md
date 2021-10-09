@@ -28,7 +28,7 @@ Create channel connection with `mwcBrowser`.
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name');
+const channelConnection = mwcBrowser<string>('my-channel-name');
 ```
 
 Create channel connection with `Channel` constructor.
@@ -36,15 +36,15 @@ Create channel connection with `Channel` constructor.
 ```ts
 import { Channel } from 'mwc-browser';
 
-const channel = new Channel<string>('my-channel-name');
+const channelConnection = new Channel<string>('my-channel-name');
 ```
 
-You can pass optional `options`.
+You can also pass optional `options`.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name', {
+const channelConnection = mwcBrowser<string>('my-channel-name', {
   pingTimer: 500, // The time to make ping.
   zombiesTimer: 500, // The time to search for zombie connection.
   managerTimer: 1000, // The time to look for manager if possible.
@@ -52,54 +52,54 @@ const channel = mwcBrowser<string>('my-channel-name', {
 });
 ```
 
-Channel `properties`.
+Channel connection `properties`.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name');
+const channelConnection = mwcBrowser<string>('my-channel-name');
 
-channel.id; // Channel UUID.
-channel.isManager; // If Channel is Manager.
-channel.numberOfConnections; // The number of current connections that connected to the same channel.
+channelConnection.id; // Channel UUID.
+channelConnection.isManager; // If Channel is Manager.
+channelConnection.numberOfConnections; // The number of current connections that connected to the same channel.
 ```
 
-Send message to other connections or to your self.
+Send message to other channel connections or to your self.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name');
+const channelConnection = mwcBrowser<string>('my-channel-name');
 
-channel.emitMessage('hi all :)');
+channelConnection.emitMessage('hi all :)');
 ```
 
-Listen to `events`.
+Listen to channel connection `events`.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name');
+const channelConnection = mwcBrowser<string>('my-channel-name');
 
-channel.onManager = (isManager: boolean): void => {
+channelConnection.onManager = (isManager: boolean): void => {
   // Do something by if you are manager or not...
 };
 
-channel.onMessage = (message: string): void => {
+channelConnection.onMessage = (message: string): void => {
   // Do something with the message...
 };
 ```
 
-Destroy the channel connection if you don't need it anymore.
+Remove the channel connection if you don't need it anymore.
 
 ```ts
 import { mwcBrowser } from 'mwc-browser';
 
-const channel = mwcBrowser<string>('my-channel-name');
+const channelConnection = mwcBrowser<string>('my-channel-name');
 
 // ...
 
-channel.destroy(); // Destroy channel, will cancel intervals, event listeners, etc.
+channelConnection.destroy(); // Will cancel intervals, event listeners, etc.
 ```
 
 ## License
