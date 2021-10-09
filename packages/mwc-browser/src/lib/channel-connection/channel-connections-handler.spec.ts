@@ -1,7 +1,6 @@
-import * as delay from 'delay';
-
 import { ChannelConnectionCreator } from './channel-connection-creator';
 import { ChannelConnectionsHandler } from './channel-connections-handler';
+import { delay } from '../utils';
 
 describe('ChannelConnectionsHandler', () => {
   it('should be created with empty connections', () => {
