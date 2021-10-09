@@ -2,6 +2,6 @@ export interface ChannelOptions {
   pingTimer: number;
   zombiesTimer: number;
   managerTimer: number;
-  maxZombieLife: number;
+  maxLife: number;
   isEmitMessageToSelf: boolean;
 }
