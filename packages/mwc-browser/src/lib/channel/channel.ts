@@ -36,7 +36,9 @@ export class Channel<T> {
     this.onMessage = null;
     this.intervalIds = [];
     this.connectionCreator = new ChannelConnectionCreator();
-    this.connectionsHandler = new ChannelConnectionsHandler();
+    this.connectionsHandler = new ChannelConnectionsHandler({
+      maxLife: this.options.maxZombieLife,
+    });
     this.communication = new SupportedChannelCommunicationFactory().create<
       ChannelMessage<T | ChannelConnection>
     >(this.name);
