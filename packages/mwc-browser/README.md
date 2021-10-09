@@ -52,6 +52,7 @@ const channelConnection = mwcBrowser<string>('my-channel-name', {
   pingTimer: 500, // The time to make ping.
   zombiesTimer: 500, // The time to search for zombie connection.
   managerTimer: 1000, // The time to look for manager if possible.
+  maxLife: 3000, // The max life time to decide if channel connection is zombie if not responded.
   isEmitMessageToSelf: false, // If you want to get the message you sent to your self from onMessage event.
 });
 ```
