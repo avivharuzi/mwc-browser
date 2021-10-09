@@ -1,4 +1,20 @@
 {
   "name": "mwc-browser",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "description": "Manager-Workers communication between browser tabs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avivharuzi/mwc-browser.git"
+  },
+  "keywords": [
+    "typescript",
+    "browser",
+    "library"
+  ],
+  "author": "Aviv Haruzi <avivharuzi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avivharuzi/mwc-browser/issues"
+  },
+  "homepage": "https://github.com/avivharuzi/mwc-browser#readme"
 }
