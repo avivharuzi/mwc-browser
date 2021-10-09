@@ -1,6 +1,5 @@
-import * as delay from 'delay';
-
 import { ChannelConnectionCreator } from './channel-connection-creator';
+import { delay } from '../utils';
 
 describe('ChannelConnectionCreator', () => {
   it('should be create ChannelConnection interface', () => {
