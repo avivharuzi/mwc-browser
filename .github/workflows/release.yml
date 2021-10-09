@@ -27,7 +27,7 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm run publish:mwc-browser
+      - run: npm run build:mwc-browser && cd dist/libs/mwc-browser && npm publish --access public && cd -
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -44,6 +44,6 @@ jobs:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm run publish:mwc-browser
+      - run: npm run build:mwc-browser && cd dist/libs/mwc-browser && npm publish --access public && cd -
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
