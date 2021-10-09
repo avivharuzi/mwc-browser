@@ -24,6 +24,7 @@ export class Channel<T> {
   private communication: ChannelCommunication<
     ChannelMessage<T | ChannelConnection>
   >;
+  private isDestroyed: boolean;
 
   constructor(name: string, options: Partial<ChannelOptions> = {}) {
     this.name = `${LIBRARY_NAME}_CHANNEL_NAME_${name}`;
@@ -39,27 +40,42 @@ export class Channel<T> {
     this.communication = new SupportedChannelCommunicationFactory().create<
       ChannelMessage<T | ChannelConnection>
     >(this.name);
+    this.isDestroyed = false;
     this.setIntervals();
     this.listenToMessages();
   }
 
-  get connections(): ChannelConnection[] {
-    return this.connectionsHandler.getConnections();
+  get id(): string {
+    return this.connectionCreator.getChannelConnection().id;
   }
 
   get isManager(): boolean {
     return this.connectionCreator.getChannelConnection().isManager;
   }
 
+  get numberOfConnections(): number {
+    return (
+      this.connectionsHandler.getConnections().length +
+      (this.isDestroyed ? 0 : 1)
+    );
+  }
+
   emitMessage(data: T): void {
     this.emit(ChannelMessageType.Message, data);
+    if (this.options.isEmitMessageToSelf && this.onMessage) {
+      this.onMessage(data);
+    }
   }
 
   destroy(): void {
+    if (this.isDestroyed) {
+      return;
+    }
     this.connectionCreator.setIsManager(false);
     this.emitPing();
     this.clearIntervals();
     this.communication.close();
+    this.isDestroyed = true;
   }
 
   private setIntervals(): void {
