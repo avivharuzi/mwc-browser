@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mwc-browser/mwc-browser-demo/feature-home": [
+        "packages/mwc-browser-demo/feature-home/src/index.ts"
+      ],
+      "@mwc-browser/mwc-browser-demo/ui-header": [
+        "packages/mwc-browser-demo/ui-header/src/index.ts"
+      ],
       "mwc-browser": ["packages/mwc-browser/src/index.ts"]
     }
   },

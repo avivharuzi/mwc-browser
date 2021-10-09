@@ -1,0 +1,16 @@
+@use '~bootstrap/scss/bootstrap-reboot';
+@use '~bootstrap/scss/bootstrap-utilities';
+@use '~bootstrap/scss/bootstrap-grid';
+@use '~@angular/material/prebuilt-themes/indigo-pink';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
