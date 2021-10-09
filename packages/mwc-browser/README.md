@@ -1,6 +1,8 @@
 # mwc-browser
 
+![CI Development](https://img.shields.io/github/workflow/status/avivharuzi/mwc-browser/CI%20Development/main)
 ![npm](https://img.shields.io/npm/v/mwc-browser)
+![Bundle Size](https://img.shields.io/bundlephobia/min/mwc-browser)
 ![GitHub](https://img.shields.io/github/license/avivharuzi/mwc-browser)
 
 Manager-Workers communication between browser tabs.
