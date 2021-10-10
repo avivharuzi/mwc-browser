@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    if: ${{ !contains(github.event.head_commit.message, 'chore(release)') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,14 +30,3 @@ jobs:
       - run: npm run build:mwc-browser && cd dist/packages/mwc-browser && npm publish --access public && cd -
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  semantic-release:
-    needs: publish-npm
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run semantic-release
-        id: release
-        uses: ridedott/release-me-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
