@@ -26,6 +26,7 @@ export class LocalstorageChannelCommunication<T>
 
   postMessage(message: T): void {
     window.localStorage.setItem(this.channelName, JSON.stringify(message));
+    window.localStorage.removeItem(this.channelName);
   }
 
   close(): void {
