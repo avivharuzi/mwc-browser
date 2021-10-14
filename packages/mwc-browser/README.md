@@ -51,9 +51,9 @@ You can also pass optional `options`.
 import { mwcBrowser } from 'mwc-browser';
 
 const channelConnection = mwcBrowser<string>('my-channel-name', {
-  pingTimer: 500, // The time to make ping.
-  zombiesTimer: 500, // The time to search for zombie connection.
-  managerTimer: 1000, // The time to look for manager if possible.
+  pingTimer: 500, // The iterable time to make ping.
+  zombiesTimer: 500, // The iterable time to search for zombie channel connections.
+  managerTimer: 1000, // The iterable time to look for channel connection to be manager if possible.
   maxLife: 3000, // The max life time to decide if channel connection is zombie if not responded.
   isEmitMessageToSelf: false, // If you want to get the message you sent to your self from onMessage event.
 });
@@ -66,9 +66,9 @@ import { mwcBrowser } from 'mwc-browser';
 
 const channelConnection = mwcBrowser<string>('my-channel-name');
 
-channelConnection.id; // Channel UUID.
-channelConnection.isManager; // If Channel is Manager.
-channelConnection.numberOfConnections; // The number of current connections that connected to the same channel.
+channelConnection.id; // Channel connection UUID.
+channelConnection.isManager; // If Channel connection is Manager.
+channelConnection.numberOfConnections; // The number of current channel connections that connected to the same channel.
 ```
 
 Send message to other channel connections or to your self.
