@@ -1,6 +1,6 @@
 {
   "name": "mwc-browser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Manager-Workers communication between browser tabs",
   "repository": {
     "type": "git",
